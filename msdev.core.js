@@ -20,3 +20,22 @@ String.method('trim', function (){
 	return this.replace(/^\s+|\s+$/g, '');
 });
 //'  xpto  '.trim();
+
+
+String.method('deentityify', function(){
+	//Mapeia nomes de entidades para caracteres.
+	var entity ={
+		quot: '"',
+		lt: '<',
+		gt: '>'	
+	};
+	
+	return function(){
+		return this.replace(/&([ˆ&;]+);/g, 
+			function (a, b){
+				var r = entity[b];
+				return typeof r === 'string' ? r : a;
+			});	
+	};
+}());
+//'&lt;&quot;&gt;'.deentityify() ==> <">
