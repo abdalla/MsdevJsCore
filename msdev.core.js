@@ -24,7 +24,7 @@ String.method('trim', function (){
 
 String.method('deentityify', function(){
 	//Mapeia nomes de entidades para caracteres.
-	var entity ={
+	var entity = {
 		quot: '"',
 		lt: '<',
 		gt: '>'	
@@ -39,3 +39,12 @@ String.method('deentityify', function(){
 	};
 }());
 //'&lt;&quot;&gt;'.deentityify() ==> <">
+
+
+var isArray = function (value){
+	return value && 
+		typeof value === 'object' &&
+		typeof value.length === 'number' &&
+		typeof value.splice === 'function' &&
+		!(value.propertyIsEnumerable('length'));
+};
